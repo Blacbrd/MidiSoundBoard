@@ -25,7 +25,7 @@ def mic_forward():
     
     MIC_INDEX = 2
 
-    # This stream simply copies whatever comes in on your mic → out to the virtual cable
+    # This stream simply copies whatever comes in on your mic to the virtual cable
     def callback(indata, outdata, frames, time, status):
         if status:
             print("Mic Forward Warning:", status)
@@ -61,7 +61,6 @@ def on_midi_message(msg):
             Thread(target=play_sound, args=(path,), daemon=True).start()
             print(f"Playing {path}")
 
-# ——————— 3) OPEN MIDI PORT & LISTEN ———————
 sd.default.samplerate = SAMPLE_RATE
 with mido.open_input(PORT_NAME) as inport:
     print("Listening for MIDI → soundboard… (press Ctrl+C to quit)")
